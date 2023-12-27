@@ -4,7 +4,7 @@
  */
 const nextConfig = {
   trailingSlash: true,
-  basePath: process.env.NODE_ENV === 'production'?'/Users/Public/e-catalogues':'',
+  basePath: '',
   output: 'export',
   images: { unoptimized: true },
    
