@@ -15,12 +15,12 @@ export default function Kyrio( { category, kyrio, ecats } ) {
                                   <p><Image src={`${basePath}/images/catalogue/${x.slug}/000.jpg`} alt={`catalogue-${x.slug}`} width='400' height='200'/></p>
                                 </div>
                                 <div className='card-title'>                             
-                                  <p className="no-mobile"><Link href={`/${category}/${kyrio.slug}/${x.slug}/tree`}>{x.name}</Link></p>
-                                  <p className="no-desktop"><Link href={`/${category}/${kyrio.slug}/${x.slug}`}>{x.name}</Link></p>
+                                  <p><Link href={`/${category}/${kyrio.slug}/${x.slug}/tree`}>{x.name}</Link></p>
+                                  {/* <p className="no-desktop"><Link href={`/${category}/${kyrio.slug}/${x.slug}`}>{x.name}</Link></p> */}
                                 </div>
                                 <div className='card-desc'>
-                                  <p className="no-mobile"><Link href={`/${category}/${kyrio.slug}/${x.slug}/tree`}><button>Επιλογή</button></Link></p>
-                                  <p className="no-desktop"><Link href={`/${category}/${kyrio.slug}/${x.slug}`}><button>Επιλογή</button></Link></p>
+                                  <p><Link href={`/${category}/${kyrio.slug}/${x.slug}/tree`}><button>Επιλογή</button></Link></p>
+                                  {/* <p className="no-desktop"><Link href={`/${category}/${kyrio.slug}/${x.slug}`}><button>Επιλογή</button></Link></p> */}
                                 </div>
                                 </div>)}
                 </div>
