@@ -12,7 +12,7 @@ export default function Home( { allParts } ) {
     event.preventDefault();
     const curr = event.target.value;
     setSearch(curr);
-    // console.log(allParts);
+    console.log(search);
   }
 
     return (
@@ -46,7 +46,7 @@ export default function Home( { allParts } ) {
                   <td>{x.name}</td>
                   <td>{x.assembly?x.assembly.catalogue.kyrio.name:''}</td>
                   <td>{x.assembly?x.assembly.catalogue.name:''}</td>
-                  <td><Link href={`${x.assembly.catalogue.kyrio.category.slug}/${x.assembly.catalogue.kyrio.slug}/${x.assembly.catalogue.slug}/tree`}>{x.picture_no} &#8618;</Link></td>
+                  <td><Link href={`${x.assembly.catalogue.kyrio.category.slug}/${x.assembly.catalogue.kyrio.slug}/${x.assembly.catalogue.slug}/tree/?assid=${x.assembly.assid}`}>{x.picture_no} &#8618;</Link></td>
                   </tr>)}
                 </tbody>
                 </table>

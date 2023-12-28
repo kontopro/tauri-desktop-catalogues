@@ -219,7 +219,8 @@ main.aithsh table tr>th{
   .no-mobile {
     display: none;
   }
-  .form-listnsn {overflow-x: auto;}
+  .tree-container {justify-content: center;}
+  .imgnsn {overflow-x: auto;}
   .nav-header>nav>ul{justify-content: center;gap:20px;}
 }
 

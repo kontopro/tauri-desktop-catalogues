@@ -3,16 +3,46 @@ import { basePath } from '@/next.config';
 import Subnav from "@/components/Subnav"
 import { Listnsn } from "@/components/Listnsn";
 import { supabase } from "@/lib/supabaseClient"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from "next/router"
 
 
 export default function Tree( { parent_assemblies, catalogue, parts } ) {
 
-    const [subassembly, setSubassembly] = useState('null');
+    const [subassembly, setSubassembly] = useState('');
+    const router = useRouter();
+
+    useEffect(() => {
+      const queryAssid = router.query.assid;
+      if (queryAssid) {
+          setSubassembly(queryAssid);
+  
+          document.querySelectorAll('.subassembly').forEach(el => {
+              el.classList.remove('checked');
+          });
+  
+          const elementToCheck = document.querySelector(`li[assid='${queryAssid}']`);
+          if (elementToCheck) {
+              elementToCheck.classList.add('checked');
+  
+              const parentContainer = elementToCheck.closest('.parent-container');
+              if (parentContainer) {
+                  parentContainer.classList.toggle('clicked');
+                  const subContainer = parentContainer.querySelector('.sub-container');
+                  if (subContainer) {
+                      subContainer.classList.toggle('opened');
+                  }
+              }
+          }
+      }
+  }, [router.query.assid]); 
+
+
     
     function handleClick(e) {
               e.preventDefault();
-              const curr = e.target.getAttribute('assid');              
+              const curr = e.target.getAttribute('assid');
+              console.log(curr)              
               setSubassembly(curr);
               const curli = document.querySelectorAll("li");
               curli.forEach((x) => {
@@ -29,7 +59,7 @@ export default function Tree( { parent_assemblies, catalogue, parts } ) {
       return parClicked,subOpened;
     }
 
-    const myparts = parts.filter(x => x.assembly.assid == subassembly)
+    const myparts = parts.filter(x => x.assembly_assid == subassembly)
 
     return (
       <main className="main">
@@ -38,7 +68,7 @@ export default function Tree( { parent_assemblies, catalogue, parts } ) {
           {/* <p>You are in Tree directory</p> */}
           {/* <p>I now test the tree module</p> */}
           <div className='tree-container'>
-            <div className="tree">
+            <div className="tree no-mobile">
               <h3>Λίστα Συγκροτημάτων</h3>
               {parent_assemblies.map(parent => 
                 <div key={parent.id} id={parent.id} className='parent-container'>
@@ -53,8 +83,8 @@ export default function Tree( { parent_assemblies, catalogue, parts } ) {
               )}
             </div>
             <div className='imgnsn'>
-              {subassembly=='null'?<>
-              <div className="no-sub"><h4>Εμφάνιση Στοιχείων Υποσυγκροτήματος</h4><p>Επιλέξτε Συγκρότημα και Υποσυγκρότημα από τη Λίστα Συγκροτημάτων, για να εμφανιστεί η αντίστοιχη εικόνα</p></div>
+              {subassembly==''?<>
+              <div className="no-sub no-mobile"><h4>Εμφάνιση Στοιχείων Υποσυγκροτήματος</h4><p>Επιλέξτε Συγκρότημα και Υποσυγκρότημα από τη Λίστα Συγκροτημάτων, για να εμφανιστεί η αντίστοιχη εικόνα</p></div>
               </>:
               <>
               <div className="title"><h3>Προβολή εικόνας και ανταλλακτικών<br/> του Υποσυγκροτήματος: {subassembly}</h3></div>
@@ -91,7 +121,7 @@ export async function getStaticProps( { params } )  {
     // console.log(sub_assemblies)
     // Από τα υπο-συγκροτήματα βρες τους ΑΟ
     // const {data: parts, error4} = await supabase.from('part').select('id,name,nsn,pn,quantity,aid,ref_no,picture_no,assembly (id,assid)').in('assembly_id',sub_assemblies.map(x => x.id)).order('aid')
-    const {data: parts, error4} = await supabase.rpc('get_parts', {cat_id: catalogue[0].id}).select('id,ref_no,picture_no,name,nsn,pn,assembly (id,assid)')
+    const {data: parts, error4} = await supabase.rpc('get_parts_from_catalogue', {cat_id: catalogue[0].id})
     return {
       props: {
         parent_assemblies,
