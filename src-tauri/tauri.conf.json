@@ -7,8 +7,8 @@
     "distDir": "../out"
   },
   "package": {
-    "productName": "e-catalogues",
-    "version": "0.1.0"
+    "productName": "KEY-e-catalogues",
+    "version": "2.0.0"
   },
   "tauri": {
     "allowlist": {
