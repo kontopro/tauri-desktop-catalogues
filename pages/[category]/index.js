@@ -17,7 +17,7 @@ export default function Category( { category, subcategories, kyria } ) {
                 <div className='cards-wrapper'>{kyria.map(x => 
                   <div key={x.id} className="card">
                       <div className='card-image'>
-                                <p><Image src={`${basePath}/images/kyrio/${x.slug}/000.jpg`} alt={`kyrio-yliko-${x.slug}`} width='400' height='200'/></p>
+                                <p><Image src={`${basePath}/images/kyrio/${x.slug}/000.webp`} alt={`kyrio-yliko-${x.slug}`} width='400' height='200'/></p>
                               </div>
                               <div className='card-title'>                             
                                 <p><Link href={`/${category.slug}/${x.slug}`}>{x.name}</Link></p>
@@ -30,7 +30,7 @@ export default function Category( { category, subcategories, kyria } ) {
                 :<div className='cards-wrapper'>{subcategories.map(x => 
                     <div key={x.id} className="card">
                         <div className='card-image'>
-                                  <p><Image src={`${basePath}/images/category/${x.slug}.jpg`} alt={`subcategory-${x.slug}`} width='400' height='200'/></p>
+                                  <p><Image src={`${basePath}/images/category/${x.slug}.webp`} alt={`subcategory-${x.slug}`} width='400' height='200'/></p>
                                 </div>
                                 <div className='card-title'>                             
                                   <p><Link href={`/${x.slug}`}>{x.name}</Link></p>
