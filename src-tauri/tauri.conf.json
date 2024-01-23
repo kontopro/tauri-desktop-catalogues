@@ -1,7 +1,7 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "",
+    "beforeBuildCommand": "npm run build",
     "beforeDevCommand": "npm run dev",
     "devPath": "http://localhost:3000",
     "distDir": "../out"
@@ -41,7 +41,10 @@
       "resources": [],
       "shortDescription": "",
       "targets": "msi",
-      "windows": {
+      "windows": 
+        {"webviewInstallMode": {
+        "type": "offlineInstaller"
+      },
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
         "timestampUrl": ""
