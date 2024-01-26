@@ -29,8 +29,12 @@ export const AithshProvider = ({ children }) => {
     setAithsh([...oldait])
   }
 
+  function resetAithsh(){
+    setAithsh([])
+  }
+
   return (
-    <AithshStateProvider value={{aithsh, handleAithsh}}>
+    <AithshStateProvider value={{aithsh, handleAithsh, resetAithsh}}>
       {children}
     </AithshStateProvider>
   )

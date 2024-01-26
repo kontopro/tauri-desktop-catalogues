@@ -4,14 +4,18 @@ import Barcode from 'react-barcode';
 
 export default function Aithsh(){
 
-    const {aithsh} = useAithsh();
+    const {aithsh,resetAithsh} = useAithsh();
     const check = <>&#x2713;</>
+    
 
     return (
         <>
-      
       <main className='aithsh'>
         <Subnav printbtn={true} aithshbtn={false} txt={`Προβολή Αίτησης`} />
+        <div className='no-mobile no-print btn-aithsh-reset'>
+            <button disabled={!aithsh.length} type="button" onClick={resetAithsh} >Καθαρισμός Αίτησης</button>
+        </div>
+      
         <div className='print'>
           <div className='print-title'>
             <h1>Αίτηση Μηχανογραφικώς Χορηγουμένων Υλικών</h1>
@@ -75,6 +79,7 @@ export default function Aithsh(){
           </table>
         </div>
       </main>
+      
     </>
     )
 }

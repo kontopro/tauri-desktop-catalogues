@@ -148,6 +148,8 @@ div.form-listnsn>table td{padding: 5px;}
 }
 
 /* Aithsh */
+
+.btn-aithsh-reset{margin: 5px auto;background-color: whitesmoke;}
 main.aithsh{display: flex;flex-direction: column;justify-content: center;}
 main.aithsh>.print{
   width: 900px;
