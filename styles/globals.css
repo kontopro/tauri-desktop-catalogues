@@ -43,18 +43,18 @@
   }
 /* main structure */
 .site-app {display: flex; flex-direction:column; min-height: 100vh; justify-content: center;background-color: #ebebec; }
-header{color: white; background-color: #171321; width: 100%; height: 140px;}
+header{color: white; background-color: #171321; width: 100%; height: 240px;}
 .container {width:100%;max-width: 1300px; margin: 0 auto; overflow: hidden;}
 footer{margin-top:auto;}
 
 /* header */
 
 /* top-header */
-.top-header{position: relative;height: 100px;display:flex;flex-wrap: wrap;}
+.top-header{position: relative;height: 180px;display:flex;flex-wrap: wrap;}
 .top-header>div{display:flex;justify-content: center;align-items: center;}
 .top-header-left{flex-basis: 100px;flex-grow:1;}
 .top-header-left>p{background-color: #dbc00e;padding:8px 16px;color:#171321;font-weight: 500;border-radius: 8%;}
-.top-header-center{flex-basis: 300px;flex-grow:3;flex-shrink: 0;}
+.top-header-center{flex-basis: 300px;flex-grow:3;flex-shrink: 0;display:flex;flex-direction: column;}
 .top-header-center>p{font-weight: 600; font-size: 40px;letter-spacing: 5px;}
 .top-header-center>p{
   background-image: linear-gradient(to left, yellow, #dbc00e);  color: transparent;
@@ -64,7 +64,7 @@ header>.top-header::after{bottom: 0;   content: "";   height: 8px;   left: 0;   
   width: 100%;background: linear-gradient(2deg,rgb(230, 102, 102),#ffe742 50%, rgb(46, 175, 218));
 }
 /* nav-header */
-.nav-header{height: 40px;}
+.nav-header{height: 60px;}
 .nav-header>nav{width: 100%;height: 100%;}
 .nav-header>nav>ul{padding: 0;width: 100%;max-width:900px;height: 100%;list-style-type: none;margin: 0 auto;display: flex;justify-content: space-between;align-items: center;flex-wrap: wrap;}
 .nav-header>nav>ul>li{display: inline;}
